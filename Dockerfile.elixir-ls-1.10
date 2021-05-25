@@ -7,6 +7,4 @@ RUN mkdir /opt/elixir-ls && \
     rm elixir-ls-1.8.2.zip && \
     chmod a+x *.sh
 
-RUN mix local.rebar --force && mix local.hex --force
-
-ENV PATH="/opt/elixir-ls:${PATH}"
+ENTRYPOINT ["/opt/elixir-ls/language_server.sh"]
