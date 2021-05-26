@@ -9,6 +9,16 @@ This repository is an attempt at providing `Dockerfiles` for various language se
 Contributions, questions, and feedback are more than welcome, especially at this early stage.
 
 
+Contributing
+============
+If you would like to add a language server to this repository, the requirements are that
+
+- The image entrypoint is the language server executable,
+- The wrapper script follows ``wrapper-template.sh``,
+- The image uses the Alpine variant of its base image (if available), and
+- There is a ``Makefile`` rule for building the image.
+
+
 Related Tools
 =============
 
