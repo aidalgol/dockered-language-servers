@@ -26,6 +26,7 @@ Example Configurations
 lsp-mode_
 ---------
 ::
+
   (dir-locals-set-class-variables 'elixirls-1-10
     '((elixir-mode .
         ((lsp-elixir-server-command . "/path/to/dockered-language-servers/elixir-ls-1.10.sh")
