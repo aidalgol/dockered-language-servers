@@ -5,6 +5,7 @@ If you would like to add a language server to this repository, the requirements 
 
 - The image entrypoint is the language server executable and in "exec form",
 - The wrapper script follows ``wrapper-template.sh``,
+- Long-form options are used for all commands, where available,
 - The image uses the Alpine variant of its base image (if available), and
 - There is a ``Makefile`` rule for building the image.
 
