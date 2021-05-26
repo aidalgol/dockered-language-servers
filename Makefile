@@ -7,5 +7,4 @@ ELIXIRLS-TARGETS = $(patsubst %,elixir-ls-%,$(ELIXIRLS-VERSIONS))
 $(ELIXIRLS-TARGETS):%:
 	docker build \
 	  --tag=$(subst elixir-ls-,elixir-ls:,$*) \
-	  --target=default \
 	  --file=$(subst elixir-ls-,Dockerfile.elixir-ls-,$*) .
