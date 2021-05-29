@@ -1,4 +1,4 @@
-FROM node:current-slim
+FROM node:current-alpine
 
 RUN npm install --global bash-language-server
 
