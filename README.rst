@@ -36,8 +36,13 @@ rid_ (Run In Docker)
 A tool for running commands inside Docker containers, with a configuration syntax akin to that of docker-compose_, and that can also generate wrapper scripts.  May be used with the `Dockerfiles` in this repository.
 
 
+Contributing
+============
+See `CONTRIBUTING.rst`_.
+
 .. _LSP: https://microsoft.github.io/language-server-protocol
 .. _lsp-docker: https://github.com/emacs-lsp/lsp-docker
 .. _lsp-mode: https://github.com/emacs-lsp/lsp-mode
 .. _rid: https://github.com/xendk/rid
 .. _docker-compose: https://docs.docker.com/compose
+.. _CONTRIBUTING.rst: CONTRIBUTING.rst
