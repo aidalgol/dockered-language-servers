@@ -4,9 +4,9 @@ Contributing
 If you would like to add a language server to this repository, the requirements are that
 
 - The image entrypoint is the language server executable and in "exec form",
-- The wrapper script follows ``wrapper-template.sh``,
+- An entry is added to the wrapper script ``dockered-lsp.sh``,
 - Long-form options are used for all commands, where available,
-- The image uses the ``-slim`` variant of its base image, if possible,
+- The image uses the ``-alpine`` variant of its base image, if possible, otherwise the ``-slim`` variant,
 - If there is no language-specific image that is appropriate to use as a base, ``debian/stable-slim`` is to be used, and
 - There is a ``Makefile`` rule for building the image.
 
@@ -14,4 +14,4 @@ It is not required to provide multiple versions, but it may be useful to have mu
 
 Long-form options are preferred to make scripts (including ``Dockerfile`` ``RUN`` instructions) clearer, without requiring the reader to look up several single-letter options.
 
-The "slim" base-images are preferred in the interest of saving space.
+The Alpine and "slim" base-images are preferred in the interest of saving space.
