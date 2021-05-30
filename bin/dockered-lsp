@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 set -eEu -o pipefail
 shopt -s failglob
 trap 'echo >&2 "${BASH_SOURCE:-$0}:${LINENO}: unknown error"' ERR
@@ -36,4 +36,5 @@ case "$server_name" in
   bash-language-server) exec_image bash-ls:latest "$@" ;;
   css-languageserver) exec_image css-ls:latest "$@" ;;
   clojure-lsp) exec_image clojure-ls:latest "$@" ;;
+  *) echo "No such language server \"$server_name\"" >&2; exit 1 ;;
 esac
