@@ -1,6 +1,5 @@
 FROM elixir:1.11-alpine
-WORKDIR /opt/elixir-ls && \
-RUN apt-get update && apt-get install --yes wget unzip
+WORKDIR /opt/elixir-ls
 RUN wget https://github.com/elixir-lsp/elixir-ls/releases/download/v0.7.0/elixir-ls-1.11.zip && \
     unzip elixir-ls-1.11.zip && \
     rm elixir-ls-1.11.zip && \
