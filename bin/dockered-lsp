@@ -34,5 +34,6 @@ case "$server_name" in
   elixir-ls-1.10) exec_elixir_image elixir-ls:1.10 "$@" ;;
   elixir-ls-1.11) exec_elixir_image elixir-ls:1.11 "$@" ;;
   bash-language-server) exec_image bash-ls:latest "$@" ;;
+  css-languageserver) exec_image css-ls:latest "$@" ;;
   clojure-lsp) exec_image clojure-ls:latest "$@" ;;
 esac
