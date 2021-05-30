@@ -9,6 +9,11 @@ This repository is an attempt at providing `Dockerfiles` for various language se
 Contributions, questions, and feedback are more than welcome, especially at this early stage.
 
 
+Usage
+=====
+Any language server available through this project can be run by invoking the ``dockered-lsp`` script (located under ``bin``) with the name of their language server.  For example ``dockered-lsp bash-language-server``.  For some language servers, we provide a symlink to this script named after the language server executable, meaning that you can simply add this repository's ``bin`` directory to your ``$PATH`` environment variable, without having to configure your client specially to use the wrapper script.  (This is not provided for all language servers, because some use a generic name for their executable, such as elixir-ls, whose executable is named ``language_server.sh``.)
+
+
 Example Configurations
 ======================
 lsp-mode_
@@ -17,7 +22,7 @@ lsp-mode_
 
   (dir-locals-set-class-variables 'elixirls-1-10
     '((elixir-mode .
-        ((lsp-elixir-server-command . "/path/to/dockered-language-servers/elixir-ls-1.10.sh")
+        ((lsp-elixir-server-command . ("/path/to/dockered-language-servers/dockered-lsp.sh" "elixir-1.10"))
          (eval . (lsp))))))
 
   (dir-locals-set-directory-class
