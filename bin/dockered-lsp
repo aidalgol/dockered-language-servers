@@ -16,6 +16,7 @@ exec_image() {
 exec_elixir_image() {
   exec docker run "${common_opts[@]}" \
        --env="MIX_HOME=$HOME/.mix" \
+       --env="HEX_HOME=$HOME/.hex" \
        "$@"
 }
 
