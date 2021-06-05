@@ -3,11 +3,22 @@ set -eEu -o pipefail
 shopt -s failglob
 trap 'echo >&2 "${BASH_SOURCE:-$0}:${LINENO}: unknown error"' ERR
 
+home_mounts_path="$HOME/.config/dockered-lsp/home-mounts"
+
 common_opts=(
   --interactive
   --user="$(id -u):$(id -g)"
-  --mount="type=bind,source=$HOME,destination=$HOME"
 )
+
+load_home_mount_file() {
+  if [ -f "$home_mounts_path" ]; then
+    while IFS= read -r path; do
+      common_opts+=(--mount="type=bind,source=$HOME/$path,destination=$HOME/$path")
+    done < "$home_mounts_path"
+  else
+    common_opts+=(--mount="type=bind,source=$HOME,destination=$HOME")
+  fi
+}
 
 exec_image() {
   exec docker run "${common_opts[@]}" "$@"
@@ -30,6 +41,8 @@ if [ "$(basename "$0")" == "dockered-lsp" ]; then
 else
   server_name="$(basename "$0")"
 fi
+
+load_home_mount_file
 
 case "$server_name" in
   elixir-ls-1.10) exec_elixir_image elixir-ls:1.10 "$@" ;;
