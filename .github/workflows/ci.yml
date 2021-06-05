@@ -1,0 +1,18 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run.
+# workflow_dispatch allows this to be run manually from the Actions tab
+on: [ push, pull_request, workflow_dispatch ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Run shellcheck
+      - name: ShellCheck
+        uses: ludeeus/action-shellcheck@1.1.0
