@@ -1,0 +1,36 @@
+name: Publish CSS-LS image
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  push:
+    branches: [ $default-branch ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: dockeredlspbot
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+      - name: Build and push to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          file: css/Dockerfile
+          tags: dockeredlsp/css-ls:latest
+
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: dockeredlspbot
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          repository: dockeredlsp/css-ls
+          short-description: "css-languageserver in a container"
+          readme-filepath: css/README.md

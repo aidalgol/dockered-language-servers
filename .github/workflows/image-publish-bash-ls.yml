@@ -1,0 +1,36 @@
+name: Publish Bash-LS image
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  push:
+    branches: [ $default-branch ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: dockeredlspbot
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+      - name: Build and push to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          file: bash/Dockerfile
+          tags: dockeredlsp/bash-ls:latest
+
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: dockeredlspbot
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          repository: dockeredlsp/bash-ls
+          short-description: "bash-language-server in a container"
+          readme-filepath: bash/README.md

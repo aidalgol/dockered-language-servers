@@ -1,0 +1,43 @@
+name: Publish ElixirLS images
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  push:
+    branches: [ $default-branch ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: dockeredlspbot
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+      - name: Build and push 1.11 to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          file: elixir/Dockerfile.1.11
+          tags: dockeredlsp/elixir-ls:1.11
+
+      - name: Build and push 1.10 to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          file: elixir/Dockerfile.1.10
+          tags: dockeredlsp/elixir-ls:1.10
+
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: dockeredlspbot
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          repository: dockeredlsp/elixir-ls
+          short-description: "ElixirLS in a container"
+          readme-filepath: elixir/README.md
