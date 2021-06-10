@@ -13,6 +13,8 @@ Usage
 =====
 Any language server available through this project can be run by invoking the ``dockered-lsp`` script (located under ``bin``) with the name of their language server.  For example ``dockered-lsp bash-language-server``.  For some language servers, we provide a symlink to this script named after the language server executable, meaning that you can simply add this repository's ``bin`` directory to your ``$PATH`` environment variable, without having to configure your client specially to use the wrapper script.  (This is not provided for all language servers, because some use a generic name for their executable, such as elixir-ls, whose executable is named ``language_server.sh``.)
 
+The images are automatically built and pushed to Docker Hub periodically, and since ``docker run`` will automatically try to pull images that do not exist in the local registry, no further setup is required when using the ``dockered-lsp`` script.
+
 
 Optional Home Directory Isolation
 =================================
