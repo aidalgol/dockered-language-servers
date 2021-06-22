@@ -7,6 +7,7 @@ registry_namespace=dockeredlsp
 home_mounts_path="$HOME/.config/dockered-lsp/home-mounts"
 
 common_opts=(
+  --rm
   --interactive
   --user="$(id -u):$(id -g)"
 )
