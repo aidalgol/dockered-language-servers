@@ -8,7 +8,6 @@ If you would like to add a language server to this repository, the requirements 
 - Long-form options are used for all commands, where available,
 - The image uses the ``-alpine`` variant of its base image, if possible, otherwise the ``-slim`` variant,
 - If there is no language-specific image that is appropriate to use as a base, ``debian/stable-slim`` is to be used,
-- There is a ``Makefile`` for building the image locally,
 - There is a ``README.md`` for the Docker Hub page, and
 - There is a GitHub action to build and publish the image and ``README.md`` to Docker Hub.
 
