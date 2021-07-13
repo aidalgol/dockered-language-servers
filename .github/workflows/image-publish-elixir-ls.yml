@@ -20,34 +20,34 @@ jobs:
           username: dockeredlspbot
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
-      - name: Build and push 1.12 to Docker Hub
+      - name: Build and push 1.12.2 to Docker Hub
         uses: docker/build-push-action@v2
         with:
           push: true
           file: elixir/Dockerfile
-          tags: dockeredlsp/elixir-ls:1.12-23.3.4
+          tags: dockeredlsp/elixir-ls:1.12.2-23.3.4
           build-args: |
             ELIXIR_VER=1.12.2
             OTP_VER=23.3.4
 
-      - name: Build and push 1.11 to Docker Hub
+      - name: Build and push 1.11.2 to Docker Hub
         uses: docker/build-push-action@v2
         with:
           push: true
           file: elixir/Dockerfile
-          tags: dockeredlsp/elixir-ls:1.11-23.3.4
+          tags: dockeredlsp/elixir-ls:1.11.2-23.3.4
           build-args: |
             ELIXIR_VER=1.11.2
             OTP_VER=23.3.4
 
-      - name: Build and push 1.10 to Docker Hub
+      - name: Build and push 1.10.4 to Docker Hub
         uses: docker/build-push-action@v2
         with:
           push: true
           file: elixir/Dockerfile
-          tags: dockeredlsp/elixir-ls:1.10-23.3.4
+          tags: dockeredlsp/elixir-ls:1.10.4-23.3.4
           build-args: |
-            ELIXIR_VER=1.10.3
+            ELIXIR_VER=1.10.4
             OTP_VER=23.3.4
 
       - name: Docker Hub Description
