@@ -2,6 +2,11 @@
 Dockerised Language Servers
 ===========================
 
+ARCHIVED 2022-04-25
+===================
+As I have moved away from Docker containers in favour of Nix environments, I am archiving this project.  If anyone wishes to take over this project, I am happy to hand over ownership of the repository and the DockerHub account under which the images have been published.
+
+
 Overview
 ========
 This repository is an attempt at providing `Dockerfiles` for various language servers, along with a wrapper script, that can be run transparently by any LSP_ client, without the client having to know anything about Docker.  Simply build the image you need, and point your text editor to the corresponding wrapper script.
